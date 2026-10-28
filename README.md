@@ -1,42 +1,65 @@
 # kathukkuvom ⚗️
 
-> **Inorganic Qualitative Analysis Virtual Lab** — A modern, interactive web application for practising semi-micro inorganic qualitative analysis (college-level chemistry curriculum).
+**kathukkuvom** is an interactive Inorganic Qualitative Analysis Virtual Lab — a React-based web app that lets students practice identifying acid radicals and basic radicals from unknown inorganic salt mixtures through realistic virtual experiments.
 
-## Live Features
+## Features
 
-- 🔬 **Interactive Workbench** — Virtual test tubes, Bunsen burner, centrifuge, and filter animations
-- 📋 **Auto Lab Record** — Observations, inferences, and precipitate/gas indicators logged automatically
-- 🗺️ **Group Separation Flowchart** — Visual cation group progress tracker
-- 🏁 **Final Report & Grading** — Submit findings, get instant score with answer key (Guided mode)
-- 🎲 **Random Mixtures** — Practice with unknown salt mixtures
-- 🔒 **Exam Mode** — Inference column hidden for self-assessment
-- 🖨️ **Print / PDF Export** — Lab record formatted for printing
+- 🔬 **Interactive Workbench** — Test tube animations, Bunsen burner, precipitate/gas/fume visual effects
+- 📋 **Auto-Logging Lab Record** — Observations, inferences auto-logged in real time
+- 🗺️ **Group Separation Flowchart** — Visual guide through analytical groups
+- 🧪 **40+ Tests** — Preliminary, SCE Confirmatory, and Cation Group Analysis stages
+- 🎯 **Guided & Exam Modes** — Learn with hints or test yourself blind
+- 📝 **Final Report** — Submit, score, and print your lab record (Page 39 format)
+- 📱 **Fully Responsive** — Mobile bottom tabs + desktop 3-column layout
+- 🌤️ **Light Theme** — Clean white glassmorphism UI
 
 ## Tech Stack
 
-- **React 18** + **Vite**
-- **Tailwind CSS v4**
-- **Framer Motion** — fluid animations
-- **Lucide React** — icons
+- **React 19** + **Vite 8**
+- **Framer Motion** — animations
+- **Tailwind CSS v4** (via `@tailwindcss/vite`)
+- **Plus Jakarta Sans** font (Google Fonts)
 
 ## Getting Started
 
 ```bash
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+## Project Structure
 
-## Stages
+```
+src/
+├── components/
+│   ├── NavBar.jsx          # Responsive top navigation
+│   ├── ReagentSidebar.jsx  # Tests & reagents panel
+│   ├── Workbench.jsx       # Interactive lab bench
+│   ├── ObservationLog.jsx  # Auto-logged record table
+│   ├── FlowChart.jsx       # Group separation guide
+│   ├── FinalReportModal.jsx# Submit & score report
+│   ├── TestTube.jsx        # Animated test tube
+│   └── BunsenBurner.jsx    # Animated burner
+├── engine/
+│   └── chemistryEngine.js  # All chemistry logic & reactions
+├── App.jsx                 # Responsive layout (mobile + desktop)
+└── index.css               # Design system + media queries
+```
 
-| Stage | Description |
+## Chemistry Coverage
+
+| Stage | Tests |
 |---|---|
-| 1. Preliminary & Anions | Physical check, flame test, SCE preparation, acid radical tests |
-| 2. SCE Confirmatory | Confirm simple and interfering acid radicals from SCE |
-| 3. Cation Group Analysis | Systematic group-wise cation separation and confirmation |
-| 4. Final Report | Submit your findings and get instant feedback |
+| Preliminary & Anions | Physical colour, dil. HCl, conc. HCl, dil. H₂SO₄, conc. H₂SO₄, flame test, AgNO₃, BaCl₂ |
+| SCE Confirmatory | CO₃, S, Cl, SO₄, NO₃, Br, F, BO₃, C₂O₄, PO₄ |
+| Cation Groups | Groups 0, I, IIA, IIB, III, IV, V, VI with confirmatory tests |
 
-## License
+---
 
-MIT
+Built for inorganic chemistry lab practice. 🧪
