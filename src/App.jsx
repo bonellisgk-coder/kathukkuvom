@@ -40,10 +40,6 @@ export default function App() {
       ...prev,
       { ...entry, id: Date.now() + Math.random(), timestamp: new Date().toLocaleTimeString() }
     ]);
-    // Auto-switch to log on mobile after a test runs
-    if (window.innerWidth < 768) {
-      setTimeout(() => setMobileTab('log'), 400);
-    }
   }, []);
 
   const markTestDone = useCallback((testId) => {
@@ -141,9 +137,21 @@ export default function App() {
                 borderTop: mobileTab===tab.id ? '2px solid #0284C7' : '2px solid transparent',
                 transition:'all 0.15s',
                 fontSize:'10px', fontWeight: mobileTab===tab.id ? 700 : 500,
+                position:'relative',
               }}>
               <span style={{ fontSize:'20px', lineHeight:1 }}>{tab.icon}</span>
               {tab.label}
+              {/* Badge: show observation count on Log tab when not active */}
+              {tab.id === 'log' && observations.length > 0 && mobileTab !== 'log' && (
+                <span style={{
+                  position:'absolute', top:'6px', right:'calc(50% - 16px)',
+                  background:'#0284C7', color:'#fff',
+                  fontSize:'9px', fontWeight:800,
+                  borderRadius:'9999px', minWidth:'16px', height:'16px',
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  padding:'0 3px',
+                }}>{observations.length}</span>
+              )}
             </button>
           ))}
           <button
